@@ -1,0 +1,45 @@
+package com.common.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import com.common.enums.PaymentMethod;
+import com.common.enums.PaymentStatus;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+
+@Entity
+@Table(name = "payments")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PaymentEntity extends BaseEntity {
+    @Column(name = "order_id")
+    private Integer orderId;
+    @Column(name = "cashier_id")
+    private Integer cashierId;
+    @Column(name = "payment_method", nullable = false)
+    private PaymentMethod paymentMethod;
+    @Column(name = "amount", nullable = false)
+    private BigDecimal amount;
+    @Column(name = "status", nullable = false)
+    private PaymentStatus paymentStatus;
+    @Column(name = "transaction_id")
+    private String transactionId;
+    @Column(name = "paid_at")
+    private LocalDateTime paidAt;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private OrderEntity order;
+    @ManyToOne
+    @JoinColumn(name = "cashier_id")
+    private UserEntity cashier;
+}

@@ -1,0 +1,34 @@
+package com.common.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.common.entities.OrderEntity;
+import com.common.enums.OrderStatus;
+import java.util.Optional;
+import java.util.List;
+
+@Repository
+public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
+    // Tìm order theo orderNumber
+    Optional<OrderEntity> findByOrderNumber(String orderNumber);
+    
+    // Tìm order cuối cùng trong ngày để generate số tiếp theo
+    // Query: Tìm order có orderNumber bắt đầu bằng prefix, sắp xếp theo id DESC, lấy 1 record đầu tiên
+    @Query("SELECT o FROM OrderEntity o WHERE o.orderNumber LIKE :prefix% ORDER BY o.id DESC")
+    Optional<OrderEntity> findLastOrderByPrefix(@Param("prefix") String prefix);
+    
+    // Tìm orders theo status
+    List<OrderEntity> findByStatus(OrderStatus status);
+    
+    // Tìm orders theo table
+    List<OrderEntity> findByTableId(Integer tableId);
+    
+    // Tìm orders theo waiter
+    List<OrderEntity> findByWaiterId(Integer waiterId);
+    
+    // Kiểm tra xem order có tồn tại không
+    boolean existsByOrderNumber(String orderNumber);
+}
