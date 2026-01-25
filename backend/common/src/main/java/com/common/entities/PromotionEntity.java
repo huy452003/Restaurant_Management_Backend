@@ -6,21 +6,23 @@ import jakarta.persistence.Column;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import com.common.enums.PromotionStatus;
 import com.common.enums.DiscountType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.FetchType;
 import java.util.List;
 
 @Entity
 @Table(name = "promotions")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor 
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class PromotionEntity extends BaseEntity {
     @Column(name = "name")
     private String name;
@@ -39,7 +41,6 @@ public class PromotionEntity extends BaseEntity {
     @Column(name = "status")
     private PromotionStatus status;
     
-    @ManyToOne
-    @JoinColumn(name = "promotion_menu_items")
+    @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
     private List<MenuItemEntity> menuItems;
 }

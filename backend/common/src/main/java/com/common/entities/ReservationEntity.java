@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
@@ -17,6 +18,7 @@ import jakarta.persistence.JoinColumn;
 @Entity
 @Table(name = "reservations")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor 
 public class ReservationEntity extends BaseEntity {
@@ -26,7 +28,7 @@ public class ReservationEntity extends BaseEntity {
     private String customerPhone;
     @Column(name = "customer_email")
     private String customerEmail;
-    @Column(name = "table_id")
+    @Column(name = "table_id", insertable = false, updatable = false)
     private Integer tableId;
     @Column(name = "reservation_date")
     private LocalDate reservationDate;
@@ -34,8 +36,8 @@ public class ReservationEntity extends BaseEntity {
     private LocalTime reservationTime;
     @Column(name = "number_of_guests")
     private Integer numberOfGuests;
-    @Column(name = "status")
-    private ReservationStatus status;
+    @Column(name = "reservation_status")
+    private ReservationStatus reservationStatus;
     @Column(name = "special_request")
     private String specialRequest;
 

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
@@ -15,6 +16,7 @@ import jakarta.persistence.FetchType;
 @Entity
 @Table(name = "tables")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class TableEntity extends BaseEntity {
@@ -22,8 +24,8 @@ public class TableEntity extends BaseEntity {
     private Integer tableNumber;
     @Column(name = "capacity")
     private Integer capacity;
-    @Column(name = "status")
-    private TableStatus status;
+    @Column(name = "table_status")
+    private TableStatus tableStatus;
     @Column(name = "location")
     private String location;
 

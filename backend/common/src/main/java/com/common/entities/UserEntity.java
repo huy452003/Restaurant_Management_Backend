@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import jakarta.persistence.OneToMany;
@@ -19,6 +20,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity extends BaseEntity {
@@ -40,13 +42,13 @@ public class UserEntity extends BaseEntity {
     private String address;
     @Column(name = "role")
     private UserRole role;
-    @Column(name = "status")
-    private UserStatus status;
+    @Column(name = "user_status")
+    private UserStatus userStatus;
 
-    @OneToMany(mappedBy = "user_orders", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "waiter", fetch = FetchType.LAZY)
     private List<OrderEntity> orders;
-    @OneToMany(mappedBy = "user_payments", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cashier", fetch = FetchType.LAZY)
     private List<PaymentEntity> payments;
-    @OneToMany(mappedBy = "user_shifts", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private List<ShiftEntity> shifts;
 }

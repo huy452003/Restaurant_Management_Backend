@@ -1,4 +1,4 @@
-package com.handle_excepitons;
+package com.handle_exceptions;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,12 +16,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import org.springframework.dao.DataIntegrityViolationException;
+import java.util.ArrayList;
+import org.springframework.core.annotation.Order;
 
 @RestControllerAdvice
+@Order(1) // Độ ưu tiên cao để catch DataIntegrityViolationException trước handler Exception tổng quát
 public class CustomExceptionHandler {
     @Autowired
     MessageSource messageSource;
@@ -32,8 +37,9 @@ public class CustomExceptionHandler {
     ResponseEntity<Response<?>> notFoundExceptionHandle(NotFoundExceptionHandle e) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> errors = new HashMap<>();
-        errors.put("Error", "List of errors: " + e.getNotFounds().toString());
+        Map<String, Object> errors = new HashMap<>();
+        errors.put("notFoundItems", e.getNotFounds());
+        errors.put("count", e.getNotFounds() != null ? e.getNotFounds().size() : 0);
 
         Response<?> response = new Response<>(
             404,
@@ -51,8 +57,9 @@ public class CustomExceptionHandler {
     ResponseEntity<Response<?>> conflictExceptionHandle(ConflictExceptionHandle e) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> errors = new HashMap<>();
-        errors.put("Error", "List of errors: " + e.getConflicts().toString());
+        Map<String, Object> errors = new HashMap<>();
+        errors.put("conflictItems", e.getConflicts());
+        errors.put("count", e.getConflicts() != null ? e.getConflicts().size() : 0);
 
         Response<?> response = new Response<>(
             409,
@@ -64,28 +71,132 @@ public class CustomExceptionHandler {
         return ResponseEntity.status(response.statusCode()).body(response);
     }
 
-    // Body Validation Exception Handler
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    ResponseEntity<Response<?>> handleBodyValidation(MethodArgumentNotValidException e) {
+    // Data Integrity Violation Exception Handler (Duplicate unique constraint)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    ResponseEntity<Response<?>> dataIntegrityViolationExceptionHandle(DataIntegrityViolationException e) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> errors = new LinkedHashMap<>();
+        Map<String, Object> errors = new HashMap<>();
+        String errorMessage = e.getMessage();
+        String rootCauseMessage = e.getRootCause() != null ? e.getRootCause().getMessage() : null;
+        String fullMessage = rootCauseMessage != null ? rootCauseMessage : errorMessage;
+        
+        String duplicateField = "uniqueField";
+        String duplicateValue = null;
+        
+        if (fullMessage != null) {
+            // Định dạng: "Duplicate entry 'value' cho key 'table.UK...'" (MySQL auto-generated constraint names)
+            if (fullMessage.contains("Duplicate entry")) {
+                // Trích xuất value giữa dấu ngoặc kép
+                int startIndex = fullMessage.indexOf("'");
+                if (startIndex >= 0) {
+                    startIndex += 1; // Bỏ qua dấu mở ngoặc kép
+                    int endIndex = fullMessage.indexOf("'", startIndex);
+                    if (endIndex > startIndex) {
+                        duplicateValue = fullMessage.substring(startIndex, endIndex);
+                    }
+                }
+                
+                // Thử trích xuất tên field từ constraint name hoặc message error
+                String lowerMessage = fullMessage.toLowerCase();
+                
+                // Kiểm tra pattern của constraint name (MySQL auto-generated constraint names)
+                // Định dạng: "Duplicate entry 'value' for key 'table.UK...'"
+                if (lowerMessage.contains("ukdu5v5sr43g5bfnji4vb8hg5s3")) {
+                    // Đây là constraint username (từ log error của bạn)
+                    duplicateField = "username";
+                } else if (lowerMessage.contains("username") || lowerMessage.contains("uk_username")) {
+                    duplicateField = "username";
+                } else if (lowerMessage.contains("email") || lowerMessage.contains("uk_email")) {
+                    duplicateField = "email";
+                } else if (lowerMessage.contains("phone") || lowerMessage.contains("uk_phone")) {
+                    duplicateField = "phone";
+                } else {
+                    // Nếu không xác định được, kiểm tra pattern của value
+                    // Phone thường có digits, email có @, username là alphanumeric
+                    if (duplicateValue != null) {
+                        if (duplicateValue.contains("@")) {
+                            duplicateField = "email";
+                        } else if (duplicateValue.matches("^[0-9]+$") && duplicateValue.length() >= 10) {
+                            duplicateField = "phone";
+                        } else {
+                            duplicateField = "username";
+                        }
+                    }
+                }
+            }
+        }
+        
+        List<Object> conflictItems = new ArrayList<>();
+        Map<String, Object> conflictItem = new HashMap<>();
+        conflictItem.put("field", duplicateField);
+        conflictItem.put("value", duplicateValue);
+        conflictItem.put("message", fullMessage != null ? fullMessage : "Duplicate entry");
+        conflictItems.add(conflictItem);
+        
+        errors.put("conflictItems", conflictItems);
+        errors.put("count", conflictItems.size());
+        if (duplicateField != null) {
+            errors.put("duplicateField", duplicateField);
+        }
+        if (duplicateValue != null) {
+            errors.put("duplicateValue", duplicateValue);
+        }
 
-        e.getBindingResult().getFieldErrors().forEach(error -> {
-            String key = error.getDefaultMessage();
-            if(key != null && key.startsWith("{") && key.endsWith("}")){
-                key = key.substring(1, key.length() - 1);
-            }
-            String msg = messageSource.getMessage(
-                key != null ? key : error.getField(), null, key != null ? key : error.getField(), locale
-            );
-            String fieldName = error.getField();
-            if(fieldName.contains(".")){
-                fieldName = fieldName.substring(fieldName.lastIndexOf(".") + 1);
-            }
-            errors.put(fieldName, msg);
-        });
+        Response<?> response = new Response<>(
+            409,
+            messageSource.getMessage("response.error.conflictError", null, locale),
+            "userModel",
+            errors,
+            null
+        );
+        return ResponseEntity.status(response.statusCode()).body(response);
+    }
+
+    // Validation Exception Handler (cho validation @RequestBody và method parameter)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({MethodArgumentNotValidException.class, HandlerMethodValidationException.class})
+    ResponseEntity<Response<?>> handleValidation(Exception e) {
+        Locale locale = LocaleContextHolder.getLocale();
+        Map<String, Object> errors = new LinkedHashMap<>();
+
+        if (e instanceof MethodArgumentNotValidException) {
+            // Xử lý validation cho @RequestBody @Valid
+            MethodArgumentNotValidException ex = (MethodArgumentNotValidException) e;
+            ex.getBindingResult().getFieldErrors().forEach(error -> {
+                String key = error.getDefaultMessage();
+                if(key != null && key.startsWith("{") && key.endsWith("}")){
+                    key = key.substring(1, key.length() - 1);
+                }
+                String msg = messageSource.getMessage(
+                    key != null ? key : error.getField(), null, key != null ? key : error.getField(), locale
+                );
+                String fieldName = error.getField();
+                if(fieldName.contains(".")){
+                    fieldName = fieldName.substring(fieldName.lastIndexOf(".") + 1);
+                }
+                errors.put(fieldName, msg);
+            });
+        } else if (e instanceof HandlerMethodValidationException) {
+            // Xử lý validation cho method parameter (Spring Boot 3.x)
+            HandlerMethodValidationException ex = (HandlerMethodValidationException) e;
+            ex.getAllValidationResults().forEach(result -> {
+                String parameterName = result.getMethodParameter().getParameterName();
+                if (parameterName != null) {
+                    result.getResolvableErrors().forEach(error -> {
+                        String key = error.getDefaultMessage();
+                        if (key != null && key.startsWith("{") && key.endsWith("}")) {
+                            key = key.substring(1, key.length() - 1);
+                        }
+                        String msg = messageSource.getMessage(
+                            key != null ? key : parameterName, null, key != null ? key : parameterName, locale
+                        );
+                        errors.put(parameterName, msg);
+                    });
+                }
+            });
+        }
 
         Response<?> response = new Response<>(
             400,
@@ -97,17 +208,28 @@ public class CustomExceptionHandler {
         return ResponseEntity.status(response.statusCode()).body(response);
     }
 
-    // Validation Exception Handler
+    // Custom Validation Exception Handler (cho validation business logic)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ValidationExceptionHandle.class)
     ResponseEntity<Response<?>> validationExceptionHandle(ValidationExceptionHandle e) {
         Locale locale = LocaleContextHolder.getLocale();
+        Map<String, Object> errors = new LinkedHashMap<>();
 
-        Map<String, String> errors = new HashMap<>();
-        errors.put("Error", e.getMessage());
-
+        // Định dạng: field -> message (đồng nhất với các handler validation khác nhau)
         if(e.getInvalidFields() != null && !e.getInvalidFields().isEmpty()){
-            errors.put("InvalidFields", e.getInvalidFields().toString());
+            e.getInvalidFields().forEach(field -> {
+                if (field instanceof Map) {
+                    @SuppressWarnings("unchecked")
+                    Map<String, Object> fieldMap = (Map<String, Object>) field;
+                    String fieldName = fieldMap.get("field") != null ? fieldMap.get("field").toString() : "unknown";
+                    String message = fieldMap.get("message") != null ? fieldMap.get("message").toString() : e.getMessage();
+                    errors.put(fieldName, message);
+                } else {
+                    errors.put("error", field.toString());
+                }
+            });
+        } else {
+            errors.put("error", e.getMessage());
         }
 
         Response<?> response = new Response<>(
@@ -126,7 +248,7 @@ public class CustomExceptionHandler {
     public ResponseEntity<Response<?>> handleInvalidFormat(HttpMessageNotReadableException ex) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> errors = new HashMap<>();
+        Map<String, Object> errors = new HashMap<>();
         Throwable cause = ex.getMostSpecificCause();
 
         if (cause instanceof InvalidFormatException || cause instanceof MismatchedInputException) {
@@ -170,7 +292,7 @@ public class CustomExceptionHandler {
     ResponseEntity<Response<?>> unauthorizedExceptionHandle(UnauthorizedExceptionHandle e) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> errors = new HashMap<>();
+        Map<String, Object> errors = new HashMap<>();
         errors.put("Error", e.getMessage());
 
         Response<?> response = new Response<>(
@@ -189,7 +311,7 @@ public class CustomExceptionHandler {
     ResponseEntity<Response<?>> forbiddenExceptionHandle(ForbiddenExceptionHandle e) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> errors = new HashMap<>();
+        Map<String, Object> errors = new HashMap<>();
         errors.put("Error", e.getMessage());
         if(e.getRequiredRole() != null){
             errors.put("RequiredRole", e.getRequiredRole());
@@ -211,7 +333,7 @@ public class CustomExceptionHandler {
     ResponseEntity<Response<?>> serviceUnavailableExceptionHandle(ServiceUnavailableExceptionHandle e) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> errors = new HashMap<>();
+        Map<String, Object> errors = new HashMap<>();
         errors.put("Error", e.getMessage());
 
         Response<?> response = new Response<>(
@@ -230,10 +352,10 @@ public class CustomExceptionHandler {
     ResponseEntity<Response<?>> tooManyRequestsExceptionHandler(TooManyRequestsExceptionHandle e) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> error = new HashMap<>();
+        Map<String, Object> error = new HashMap<>();
         error.put("Error", e.getMessage());
         if (e.getRetryAfter() != null) {
-            error.put("RetryAfter", String.valueOf(e.getRetryAfter()));
+            error.put("RetryAfter", e.getRetryAfter());
         }
         
         Response<?> response = new Response<>(
@@ -258,7 +380,7 @@ public class CustomExceptionHandler {
     ResponseEntity<Response<?>> exceptionHandler(Exception e) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        Map<String, String> error = new HashMap<>();
+        Map<String, Object> error = new HashMap<>();
         error.put("Error", e.getMessage());
         
         Response<?> response = new Response<>(

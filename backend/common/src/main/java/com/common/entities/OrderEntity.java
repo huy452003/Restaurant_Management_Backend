@@ -30,12 +30,12 @@ import jakarta.persistence.FetchType;
 public class OrderEntity extends BaseEntity {
     @Column(name = "order_number", unique = true, length = 20)
     private String orderNumber;
-    @Column(name = "table_id")
+    @Column(name = "table_id", insertable = false, updatable = false)
     private Integer tableId;
-    @Column(name = "waiter_id")
+    @Column(name = "waiter_id", insertable = false, updatable = false)
     private Integer waiterId;
-    @Column(name = "status")
-    private OrderStatus status;
+    @Column(name = "order_status")
+    private OrderStatus orderStatus;
     @Column(name = "order_type")
     private OrderType orderType;
     @Column(name = "sub_total", nullable = false)

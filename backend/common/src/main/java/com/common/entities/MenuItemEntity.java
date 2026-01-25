@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
@@ -18,6 +19,7 @@ import jakarta.persistence.FetchType;
 @Entity
 @Table(name = "menu_items")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class MenuItemEntity extends BaseEntity {
@@ -29,10 +31,10 @@ public class MenuItemEntity extends BaseEntity {
     private BigDecimal price;
     @Column(name = "image")
     private String image;
-    @Column(name = "category_id")
+    @Column(name = "category_id", insertable = false, updatable = false)
     private Integer categoryId;
-    @Column(name = "status")
-    private MenuItemStatus status;
+    @Column(name = "menu_item_status")
+    private MenuItemStatus menuItemStatus;
     @Column(name = "preparation_time")
     private Integer preparationTime;
 

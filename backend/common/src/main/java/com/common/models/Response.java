@@ -8,6 +8,6 @@ public record Response<T>(
     Integer statusCode,
     String message,
     String modelName,
-    Map<String, String> errors,
+    Map<String, Object> errors,
     T data
 ) {}

@@ -1,0 +1,217 @@
+2026-01-26 00:32:43 [background-preinit] DEBUG [logging] - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
+2026-01-26 00:32:43 [main] INFO  [AppApplication] - Starting AppApplication using Java 17.0.16 with PID 15460 (D:\project IntelliJ Ultimate\Restaurant_Management\backend\app\target\classes started by tranhuy in D:\project IntelliJ Ultimate\Restaurant_Management\backend\app)
+2026-01-26 00:32:43 [main] DEBUG [AppApplication] - Running with Spring Boot v3.5.0, Spring v6.2.7
+2026-01-26 00:32:43 [main] INFO  [AppApplication] - No active profile set, falling back to 1 default profile: "default"
+2026-01-26 00:32:45 [main] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:32:45 [main] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:32:48 [main] DEBUG [InternalLoggerFactory] - Using SLF4J as the default logging framework
+2026-01-26 00:32:49 [main] WARN  [deprecation] - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-26 00:32:55 [main] WARN  [JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-26 00:32:55 [main] DEBUG [Mappings] - 
+	c.a.c.UserController:
+	{GET [/users]}: getAll(String)
+	{POST [/users]}: creates(String,List)
+2026-01-26 00:32:55 [main] DEBUG [Mappings] - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2026-01-26 00:32:55 [main] DEBUG [Mappings] - 'beanNameHandlerMapping' {}
+2026-01-26 00:32:56 [main] DEBUG [Mappings] - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
+2026-01-26 00:32:57 [main] DEBUG [Loggers] - Using Slf4j logging framework
+2026-01-26 00:32:58 [main] INFO  [AppApplication] - Started AppApplication in 15.85 seconds (process running for 16.525)
+2026-01-26 00:33:05 [http-nio-8080-exec-2] INFO  [LoggingServiceImp] - [module: {module}, className: {className}, methodName: {methodName}, userId: {userId}, message: {message}]
+2026-01-26 00:33:05 [http-nio-8080-exec-2] INFO  [LoggingServiceImp] - [module: {module}, className: {className}, methodName: {methodName}, userId: {userId}, message: {message}]
+2026-01-26 00:33:05 [http-nio-8080-exec-2] ERROR [LoggingServiceImp] - [module: {module}, className: {className}, methodName: {methodName}, userId: {userId}, message: {message}, exception: {exception}]
+2026-01-26 00:37:12 [background-preinit] DEBUG [logging] - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
+2026-01-26 00:37:13 [restartedMain] INFO  [AppApplication] - Starting AppApplication using Java 17.0.16 with PID 10664 (D:\project IntelliJ Ultimate\Restaurant_Management\backend\app\target\classes started by tranhuy in D:\project IntelliJ Ultimate\Restaurant_Management\backend\app)
+2026-01-26 00:37:13 [restartedMain] DEBUG [AppApplication] - Running with Spring Boot v3.5.0, Spring v6.2.7
+2026-01-26 00:37:13 [restartedMain] INFO  [AppApplication] - No active profile set, falling back to 1 default profile: "default"
+2026-01-26 00:37:15 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:15 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:18 [restartedMain] DEBUG [InternalLoggerFactory] - Using SLF4J as the default logging framework
+2026-01-26 00:37:20 [restartedMain] WARN  [deprecation] - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-26 00:37:27 [restartedMain] WARN  [JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-26 00:37:28 [restartedMain] DEBUG [Mappings] - 
+	c.a.c.UserController:
+	{GET [/users]}: getAll(String)
+	{POST [/users]}: creates(String,List)
+2026-01-26 00:37:28 [restartedMain] DEBUG [Mappings] - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2026-01-26 00:37:28 [restartedMain] DEBUG [Mappings] - 'beanNameHandlerMapping' {}
+2026-01-26 00:37:28 [restartedMain] DEBUG [Mappings] - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
+2026-01-26 00:37:29 [restartedMain] DEBUG [Loggers] - Using Slf4j logging framework
+2026-01-26 00:37:31 [restartedMain] INFO  [AppApplication] - Started AppApplication in 19.157 seconds (process running for 19.898)
+2026-01-26 00:37:45 [restartedMain] INFO  [AppApplication] - Starting AppApplication using Java 17.0.16 with PID 10664 (D:\project IntelliJ Ultimate\Restaurant_Management\backend\app\target\classes started by tranhuy in D:\project IntelliJ Ultimate\Restaurant_Management\backend\app)
+2026-01-26 00:37:45 [restartedMain] DEBUG [AppApplication] - Running with Spring Boot v3.5.0, Spring v6.2.7
+2026-01-26 00:37:45 [restartedMain] INFO  [AppApplication] - No active profile set, falling back to 1 default profile: "default"
+2026-01-26 00:37:45 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:45 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:46 [restartedMain] WARN  [deprecation] - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-26 00:37:47 [restartedMain] WARN  [JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-26 00:37:47 [restartedMain] DEBUG [Mappings] - 
+	c.a.c.UserController:
+	{GET [/users]}: getAll(String)
+	{POST [/users]}: creates(String,List)
+2026-01-26 00:37:47 [restartedMain] DEBUG [Mappings] - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2026-01-26 00:37:47 [restartedMain] DEBUG [Mappings] - 'beanNameHandlerMapping' {}
+2026-01-26 00:37:48 [restartedMain] DEBUG [Mappings] - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
+2026-01-26 00:37:48 [restartedMain] INFO  [AppApplication] - Started AppApplication in 3.366 seconds (process running for 37.159)
+2026-01-26 00:37:50 [restartedMain] INFO  [AppApplication] - Starting AppApplication using Java 17.0.16 with PID 10664 (D:\project IntelliJ Ultimate\Restaurant_Management\backend\app\target\classes started by tranhuy in D:\project IntelliJ Ultimate\Restaurant_Management\backend\app)
+2026-01-26 00:37:50 [restartedMain] DEBUG [AppApplication] - Running with Spring Boot v3.5.0, Spring v6.2.7
+2026-01-26 00:37:50 [restartedMain] INFO  [AppApplication] - No active profile set, falling back to 1 default profile: "default"
+2026-01-26 00:37:50 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [RxJava2OnClasspathCondition] - RxJava2 related Aspect extensions are not activated, because RxJava2 is not on the classpath.
+2026-01-26 00:37:50 [restartedMain] DEBUG [ReactorOnClasspathCondition] - Reactor related Aspect extensions are not activated because Resilience4j Reactor module is not on the classpath.
+2026-01-26 00:37:51 [restartedMain] WARN  [deprecation] - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-26 00:37:52 [restartedMain] WARN  [JpaBaseConfiguration$JpaWebConfiguration] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-26 00:37:52 [restartedMain] DEBUG [Mappings] - 
+	c.a.c.UserController:
+	{GET [/users]}: getAll(String)
+	{POST [/users]}: creates(String,List)
+2026-01-26 00:37:52 [restartedMain] DEBUG [Mappings] - 
+	o.s.b.a.w.s.e.BasicErrorController:
+	{ [/error]}: error(HttpServletRequest)
+	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
+2026-01-26 00:37:52 [restartedMain] DEBUG [Mappings] - 'beanNameHandlerMapping' {}
+2026-01-26 00:37:52 [restartedMain] DEBUG [Mappings] - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
+2026-01-26 00:37:53 [restartedMain] INFO  [AppApplication] - Started AppApplication in 3.141 seconds (process running for 42.066)
+2026-01-26 00:37:55 [http-nio-8080-exec-3] INFO  [LoggingServiceImp] - [module: {module}, className: {className}, methodName: {methodName}, userId: {userId}, message: {message}]
+2026-01-26 00:37:55 [http-nio-8080-exec-3] INFO  [LoggingServiceImp] - [module: {module}, className: {className}, methodName: {methodName}, userId: {userId}, message: {message}]
+2026-01-26 00:37:55 [http-nio-8080-exec-3] ERROR [LoggingServiceImp] - [module: {module}, className: {className}, methodName: {methodName}, userId: {userId}, message: {message}, exception: {exception}]
+2026-01-26 00:37:55 [http-nio-8080-exec-3] WARN  [ExceptionHandlerExceptionResolver] - Resolved [NotFoundExceptionHandle(notFounds=[], modelName=userModel)]
+2026-01-26 00:38:22 [restartedMain] INFO  [AppApplication] - Starting AppApplication using Java 17.0.16 with PID 10664 (D:\project IntelliJ Ultimate\Restaurant_Management\backend\app\target\classes started by tranhuy in D:\project IntelliJ Ultimate\Restaurant_Management\backend\app)
+2026-01-26 00:38:22 [restartedMain] DEBUG [AppApplication] - Running with Spring Boot v3.5.0, Spring v6.2.7
+2026-01-26 00:38:22 [restartedMain] INFO  [AppApplication] - No active profile set, falling back to 1 default profile: "default"
+2026-01-26 00:38:22 [restartedMain] WARN  [AnnotationConfigServletWebServerApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: URL [jar:file:/C:/Users/tranhuy/.m2/repository/com/logging/logging/4.0.1/logging-4.0.1.jar!/com/logging/services/LoggingService.class]
+2026-01-26 00:38:22 [restartedMain] ERROR [SpringApplication] - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: URL [jar:file:/C:/Users/tranhuy/.m2/repository/com/logging/logging/4.0.1/logging-4.0.1.jar!/com/logging/services/LoggingService.class]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:510) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:351) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:277) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:128) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:346) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:281) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:204) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:172) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:418) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351) ~[spring-boot-3.5.0.jar:3.5.0]
+	at com.app.AppApplication.main(AppApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.0.jar:3.5.0]
+Caused by: java.util.zip.ZipException: ZipFile invalid LOC header (bad signature)
+	at java.base/java.util.zip.ZipFile$ZipFileInputStream.initDataOffset(ZipFile.java:928) ~[na:na]
+	at java.base/java.util.zip.ZipFile$ZipFileInputStream.read(ZipFile.java:939) ~[na:na]
+	at java.base/java.util.zip.ZipFile$ZipFileInflaterInputStream.fill(ZipFile.java:456) ~[na:na]
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:158) ~[na:na]
+	at java.base/java.io.FilterInputStream.read(FilterInputStream.java:132) ~[na:na]
+	at org.springframework.asm.ClassReader.readStream(ClassReader.java:323) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.asm.ClassReader.<init>(ClassReader.java:288) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:56) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:122) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:470) ~[spring-context-6.2.7.jar:6.2.7]
+	... 25 common frames omitted
+2026-01-26 00:38:24 [restartedMain] INFO  [AppApplication] - Starting AppApplication using Java 17.0.16 with PID 10664 (D:\project IntelliJ Ultimate\Restaurant_Management\backend\app\target\classes started by tranhuy in D:\project IntelliJ Ultimate\Restaurant_Management\backend\app)
+2026-01-26 00:38:24 [restartedMain] DEBUG [AppApplication] - Running with Spring Boot v3.5.0, Spring v6.2.7
+2026-01-26 00:38:24 [restartedMain] INFO  [AppApplication] - No active profile set, falling back to 1 default profile: "default"
+2026-01-26 00:38:24 [restartedMain] WARN  [AnnotationConfigServletWebServerApplicationContext] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: URL [jar:file:/C:/Users/tranhuy/.m2/repository/com/logging/logging/4.0.1/logging-4.0.1.jar!/com/logging/services/LoggingService.class]
+2026-01-26 00:38:24 [restartedMain] ERROR [SpringApplication] - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: URL [jar:file:/C:/Users/tranhuy/.m2/repository/com/logging/logging/4.0.1/logging-4.0.1.jar!/com/logging/services/LoggingService.class]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:510) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:351) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:277) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:128) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:346) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:281) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:204) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:172) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:418) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.7.jar:6.2.7]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362) ~[spring-boot-3.5.0.jar:3.5.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351) ~[spring-boot-3.5.0.jar:3.5.0]
+	at com.app.AppApplication.main(AppApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.0.jar:3.5.0]
+Caused by: java.util.zip.ZipException: ZipFile invalid LOC header (bad signature)
+	at java.base/java.util.zip.ZipFile$ZipFileInputStream.initDataOffset(ZipFile.java:928) ~[na:na]
+	at java.base/java.util.zip.ZipFile$ZipFileInputStream.read(ZipFile.java:939) ~[na:na]
+	at java.base/java.util.zip.ZipFile$ZipFileInflaterInputStream.fill(ZipFile.java:456) ~[na:na]
+	at java.base/java.util.zip.InflaterInputStream.read(InflaterInputStream.java:158) ~[na:na]
+	at java.base/java.io.FilterInputStream.read(FilterInputStream.java:132) ~[na:na]
+	at org.springframework.asm.ClassReader.readStream(ClassReader.java:323) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.asm.ClassReader.<init>(ClassReader.java:288) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:56) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:122) ~[spring-core-6.2.7.jar:6.2.7]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:470) ~[spring-context-6.2.7.jar:6.2.7]
+	... 25 common frames omitted

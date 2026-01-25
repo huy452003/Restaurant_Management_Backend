@@ -14,19 +14,19 @@ import java.util.List;
 @Repository
 public interface ShiftRepository extends JpaRepository<ShiftEntity, Integer> {
     // Tìm shifts theo employee
-    List<ShiftEntity> findByEmployeeId(Integer employeeId);
+    List<ShiftEntity> findByEmployee_Id(Integer employeeId);
     
     // Tìm shifts theo status
-    List<ShiftEntity> findByStatus(ShiftStatus status);
+    List<ShiftEntity> findByShiftStatus(ShiftStatus shiftStatus);
     
     // Tìm shifts theo ngày
     List<ShiftEntity> findByShiftDate(LocalDate date);
     
     // Tìm shifts của employee trong ngày
-    List<ShiftEntity> findByEmployeeIdAndShiftDate(Integer employeeId, LocalDate date);
+    List<ShiftEntity> findByEmployee_IdAndShiftDate(Integer employeeId, LocalDate date);
     
     // Tìm active shifts (đang diễn ra)
-    @Query("SELECT s FROM ShiftEntity s WHERE s.status = 'ACTIVE' " +
+    @Query("SELECT s FROM ShiftEntity s WHERE s.shiftStatus = ShiftStatus.IN_PROGRESS " +
            "AND s.startTime <= :now AND s.endTime >= :now")
     List<ShiftEntity> findActiveShifts(@Param("now") LocalDateTime now);
     
@@ -38,7 +38,7 @@ public interface ShiftRepository extends JpaRepository<ShiftEntity, Integer> {
     );
     
     // Tìm shifts của employee trong khoảng thời gian
-    @Query("SELECT s FROM ShiftEntity s WHERE s.employeeId = :employeeId " +
+    @Query("SELECT s FROM ShiftEntity s WHERE s.employee.id = :employeeId " +
            "AND s.shiftDate BETWEEN :startDate AND :endDate")
     List<ShiftEntity> findEmployeeShiftsBetweenDates(
         @Param("employeeId") Integer employeeId,

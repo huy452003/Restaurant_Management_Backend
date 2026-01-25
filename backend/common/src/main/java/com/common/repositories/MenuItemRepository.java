@@ -10,17 +10,17 @@ import java.util.List;
 @Repository
 public interface MenuItemRepository extends JpaRepository<MenuItemEntity, Integer> {
     // Tìm menu items theo status
-    List<MenuItemEntity> findByStatus(MenuItemStatus status);
+    List<MenuItemEntity> findByMenuItemStatus(MenuItemStatus menuItemStatus);
     
     // Tìm menu items available
-    List<MenuItemEntity> findByStatusOrderByNameAsc(MenuItemStatus status);
+    List<MenuItemEntity> findByMenuItemStatusOrderByNameAsc(MenuItemStatus menuItemStatus);
     
     // Tìm menu items theo category
     List<MenuItemEntity> findByCategoryId(Integer categoryId);
     
     // Tìm menu items available theo category
-    List<MenuItemEntity> findByCategoryIdAndStatus(Integer categoryId, MenuItemStatus status);
+    List<MenuItemEntity> findByCategoryIdAndMenuItemStatus(Integer categoryId, MenuItemStatus menuItemStatus);
     
     // Kiểm tra xem menu item có tồn tại không
-    boolean existsByIdAndStatus(Integer id, MenuItemStatus status);
+    boolean existsByIdAndMenuItemStatus(Integer id, MenuItemStatus menuItemStatus);
 }

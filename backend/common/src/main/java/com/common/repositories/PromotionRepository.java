@@ -20,12 +20,12 @@ public interface PromotionRepository extends JpaRepository<PromotionEntity, Inte
     List<PromotionEntity> findByStatus(PromotionStatus status);
     
     // Tìm active promotions (đang diễn ra)
-    @Query("SELECT p FROM PromotionEntity p WHERE p.status = 'ACTIVE' " +
+    @Query("SELECT p FROM PromotionEntity p WHERE p.status = PromotionStatus.ACTIVE " +
            "AND p.startDate <= :now AND p.endDate >= :now")
     List<PromotionEntity> findActivePromotions(@Param("now") LocalDateTime now);
     
     // Tìm promotions sắp bắt đầu
-    @Query("SELECT p FROM PromotionEntity p WHERE p.status = 'ACTIVE' " +
+    @Query("SELECT p FROM PromotionEntity p WHERE p.status = PromotionStatus.ACTIVE " +
            "AND p.startDate > :now AND p.startDate <= :futureDate")
     List<PromotionEntity> findUpcomingPromotions(
         @Param("now") LocalDateTime now,

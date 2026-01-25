@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     
     // Tìm user theo role
     List<UserEntity> findByRole(UserRole role);
-    List<UserEntity> findByStatus(UserStatus status);
+    List<UserEntity> findByUserStatus(UserStatus userStatus);
     
     // Kiểm tra xem user có tồn tại không
     boolean existsByEmail(String email);

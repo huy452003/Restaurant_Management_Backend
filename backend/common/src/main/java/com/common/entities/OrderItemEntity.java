@@ -21,9 +21,9 @@ import jakarta.persistence.JoinColumn;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderItemEntity extends BaseEntity {
-    @Column(name = "order_id")
+    @Column(name = "order_id", insertable = false, updatable = false)
     private Integer orderId;
-    @Column(name = "menu_item_id")
+    @Column(name = "menu_item_id", insertable = false, updatable = false)
     private Integer menuItemId;
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
@@ -33,8 +33,8 @@ public class OrderItemEntity extends BaseEntity {
     private BigDecimal subTotal;
     @Column(name = "special_instructions")
     private String specialInstructions;
-    @Column(name = "status")
-    private OrderItemStatus status;
+    @Column(name = "order_item_status")
+    private OrderItemStatus orderItemStatus;
 
     @ManyToOne
     @JoinColumn(name = "order_id")

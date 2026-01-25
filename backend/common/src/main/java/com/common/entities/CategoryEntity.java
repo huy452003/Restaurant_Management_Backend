@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
@@ -15,6 +16,7 @@ import jakarta.persistence.FetchType;
 @Entity
 @Table(name = "categories")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryEntity extends BaseEntity {
@@ -24,9 +26,9 @@ public class CategoryEntity extends BaseEntity {
     private String description;
     @Column(name = "image")
     private String image;
-    @Column(name = "status")
-    private MenuItemStatus status;
+    @Column(name = "menu_item_status")
+    private MenuItemStatus menuItemStatus;
 
-    @OneToMany(mappedBy = "category_menu_items", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<MenuItemEntity> menuItems;
 }

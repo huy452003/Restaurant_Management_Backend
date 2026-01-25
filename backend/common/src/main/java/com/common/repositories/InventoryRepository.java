@@ -15,7 +15,7 @@ public interface InventoryRepository extends JpaRepository<InventoryEntity, Inte
     Optional<InventoryEntity> findByIngredientName(String ingredientName);
     
     // Tìm inventories theo status
-    List<InventoryEntity> findByStatus(InventoryStatus status);
+    List<InventoryEntity> findByInventoryStatus(InventoryStatus inventoryStatus);
     
     // Tìm inventories có quantity thấp (cần restock)
     @Query("SELECT i FROM InventoryEntity i WHERE i.quantity <= i.minStockLevel")
@@ -23,17 +23,17 @@ public interface InventoryRepository extends JpaRepository<InventoryEntity, Inte
     
     // Tìm inventories cần restock (quantity <= minStockLevel)
     @Query("SELECT i FROM InventoryEntity i WHERE i.quantity <= i.minStockLevel " +
-           "AND i.status = 'AVAILABLE'")
+           "AND i.inventoryStatus = InventoryStatus.IN_STOCK")
     List<InventoryEntity> findItemsNeedingRestock();
     
     // Tìm out of stock items
     @Query("SELECT i FROM InventoryEntity i WHERE i.quantity = 0 " +
-           "OR i.status = 'OUT_OF_STOCK'")
+           "OR i.inventoryStatus = InventoryStatus.OUT_OF_STOCK")
     List<InventoryEntity> findOutOfStockItems();
     
     // Kiểm tra xem inventory có tồn tại không
     boolean existsByIngredientName(String ingredientName);
     
     // Tìm inventories theo status và sắp xếp theo name
-    List<InventoryEntity> findByStatusOrderByIngredientNameAsc(InventoryStatus status);
+    List<InventoryEntity> findByInventoryStatusOrderByIngredientNameAsc(InventoryStatus inventoryStatus);
 }

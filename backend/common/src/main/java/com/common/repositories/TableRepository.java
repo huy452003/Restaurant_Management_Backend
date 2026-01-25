@@ -14,10 +14,10 @@ public interface TableRepository extends JpaRepository<TableEntity, Integer> {
     Optional<TableEntity> findByTableNumber(Integer tableNumber);
     
     // Tìm tables theo status
-    List<TableEntity> findByStatus(TableStatus status);
+    List<TableEntity> findByTableStatus(TableStatus tableStatus);
     
     // Tìm available tables
-    List<TableEntity> findByStatusOrderByTableNumberAsc(TableStatus status);
+    List<TableEntity> findByTableStatusOrderByTableNumberAsc(TableStatus tableStatus);
     
     // Kiểm tra xem table có tồn tại không
     boolean existsByTableNumber(Integer tableNumber);

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
@@ -18,18 +19,19 @@ import jakarta.persistence.JoinColumn;
 @Entity
 @Table(name = "payments")
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentEntity extends BaseEntity {
-    @Column(name = "order_id")
+    @Column(name = "order_id", insertable = false, updatable = false)
     private Integer orderId;
-    @Column(name = "cashier_id")
+    @Column(name = "cashier_id", insertable = false, updatable = false)
     private Integer cashierId;
     @Column(name = "payment_method", nullable = false)
     private PaymentMethod paymentMethod;
     @Column(name = "amount", nullable = false)
     private BigDecimal amount;
-    @Column(name = "status", nullable = false)
+    @Column(name = "payment_status", nullable = false)
     private PaymentStatus paymentStatus;
     @Column(name = "transaction_id")
     private String transactionId;

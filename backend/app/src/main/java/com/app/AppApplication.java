@@ -2,8 +2,14 @@ package com.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@EnableJpaRepositories(basePackages = "com.common.repositories")
+@EntityScan(basePackages = "com.common.entities")
+@ComponentScan(basePackages = {"com.app", "com.common", "com.logging", "com.handle_exceptions"})
 public class AppApplication {
 
 	public static void main(String[] args) {

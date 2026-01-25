@@ -21,7 +21,7 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
     Optional<OrderEntity> findLastOrderByPrefix(@Param("prefix") String prefix);
     
     // Tìm orders theo status
-    List<OrderEntity> findByStatus(OrderStatus status);
+    List<OrderEntity> findByOrderStatus(OrderStatus orderStatus);
     
     // Tìm orders theo table
     List<OrderEntity> findByTableId(Integer tableId);

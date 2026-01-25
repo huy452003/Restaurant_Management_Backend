@@ -1,9 +1,19 @@
 package com.logging.models;
 
-public record LogContext(
-    String module, 
-    String className, 
-    String methodName, 
-    String userId, 
-    String message
-) {}
+import lombok.Data;
+import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Builder;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Builder(toBuilder = true)
+public class LogContext {
+    private String module;
+    private String className;
+    private String methodName;
+    private Integer userId;
+}

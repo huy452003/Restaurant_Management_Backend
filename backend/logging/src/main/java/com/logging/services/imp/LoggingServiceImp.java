@@ -14,9 +14,11 @@ public class LoggingServiceImp implements LoggingService {
     @Override
     public void logInfo(String message, LogContext context) {
         log.info(
-            "[{}] {} - {}",
-            context.module(),
-            context.className(),
+            "[module: {} - className: {} - methodName: {} - userId: {} - message: {}]",
+            context.getModule(),
+            context.getClassName(),
+            context.getMethodName(),
+            context.getUserId() != null ? String.valueOf(context.getUserId()) : "N/A",
             message
         );
     }
@@ -24,9 +26,11 @@ public class LoggingServiceImp implements LoggingService {
     @Override
     public void logWarn(String message, LogContext context) {
         log.warn(
-            "[{}] {} - {}",
-            context.module(),
-            context.className(),
+            "[module: {} - className: {} - methodName: {} - userId: {} - message: {}]",
+            context.getModule(),
+            context.getClassName(),
+            context.getMethodName(),
+            context.getUserId() != null ? String.valueOf(context.getUserId()) : "N/A",
             message
         );
     }
@@ -34,21 +38,29 @@ public class LoggingServiceImp implements LoggingService {
     @Override
     public void logDebug(String message, LogContext context) {
         log.debug(
-            "[{}] {} - {}",
-            context.module(),
-            context.className(),
+            "[module: {} - className: {} - methodName: {} - userId: {} - message: {}]",
+            context.getModule(),
+            context.getClassName(),
+            context.getMethodName(),
+            context.getUserId() != null ? String.valueOf(context.getUserId()) : "N/A",
             message
         );
     }
 
     @Override
-    public void logError(String message, Exception exception, LogContext context) {
+    public void logError(String message, LogContext context, Exception exception) {
+        String exceptionInfo = exception != null 
+            ? exception.getClass().getSimpleName() + ": " + (exception.getMessage() != null ? exception.getMessage() : "No message")
+            : "No exception";
         log.error(
-            "[{}] {} - {}: {}",
-            context.module(),
-            context.className(),
+            "[module: {} - className: {} - methodName: {} - userId: {} - message: {} - exception: {}]",
+            context.getModule(),
+            context.getClassName(),
+            context.getMethodName(),
+            context.getUserId() != null ? String.valueOf(context.getUserId()) : "N/A",
             message,
-            exception != null ? exception.getMessage() : "No exception");
+            exceptionInfo
+        );
     }
 
 }

@@ -1,4 +1,4 @@
-package com.handle_excepitons;
+package com.handle_exceptions;
 
 import lombok.Data;
 import lombok.ToString;

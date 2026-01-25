@@ -16,7 +16,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     List<ReservationEntity> findByTableId(Integer tableId);
     
     // Tìm reservations theo status
-    List<ReservationEntity> findByStatus(ReservationStatus status);
+    List<ReservationEntity> findByReservationStatus(ReservationStatus reservationStatus);
     
     // Tìm reservations theo ngày
     List<ReservationEntity> findByReservationDate(LocalDate date);
@@ -33,9 +33,9 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     // Tìm reservations trong khoảng thời gian
     @Query("SELECT r FROM ReservationEntity r WHERE r.reservationDate = :date " +
            "AND r.tableId = :tableId " +
-           "AND r.status != 'CANCELLED'")
+           "AND r.reservationStatus != ReservationStatus.CANCELLED")
     List<ReservationEntity> findActiveReservationsByTableAndDate(
-        @Param("tableId") Integer tableId,
-        @Param("date") LocalDate date
+        @Param("date") LocalDate date,
+        @Param("tableId") Integer tableId
     );
 }
