@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Builder;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,5 +17,5 @@ public class LogContext {
     private String module;
     private String className;
     private String methodName;
-    private Integer userId;
+    private List<Integer> userIds;
 }

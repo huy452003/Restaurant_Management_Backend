@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -15,7 +17,6 @@ import com.common.enums.UserStatus;
 import com.common.enums.Gender;
 import jakarta.persistence.FetchType;
 import java.util.List;
-
 
 @Entity
 @Table(name = "users")
@@ -51,4 +52,15 @@ public class UserEntity extends BaseEntity {
     private List<PaymentEntity> payments;
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
     private List<ShiftEntity> shifts;
+
+    @PrePersist
+    @PreUpdate
+    private void normalizeFields() {
+        if (this.email != null) {
+            this.email = this.email.toLowerCase().trim();
+        }
+        if (this.username != null) {
+            this.username = this.username.toLowerCase().trim();
+        }
+    }
 }

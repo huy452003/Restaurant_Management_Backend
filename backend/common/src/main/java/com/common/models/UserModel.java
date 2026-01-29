@@ -6,6 +6,8 @@ import com.common.enums.Gender;
 import com.common.enums.UserRole;
 import com.common.enums.UserStatus;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,7 @@ public class UserModel extends BaseModel{
     private String email;
     private String phone;
     private Gender gender;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birth;
     private Integer age;
     private String address;
