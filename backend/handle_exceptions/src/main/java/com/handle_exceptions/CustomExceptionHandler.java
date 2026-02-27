@@ -39,7 +39,7 @@ public class CustomExceptionHandler {
 
         Map<String, Object> errors = new HashMap<>();
         errors.put("notFoundItems", e.getNotFounds());
-        errors.put("count", e.getNotFounds() != null ? e.getNotFounds().size() : 0);
+        errors.put("detailMessage", e.getMessage());
 
         Response<?> response = new Response<>(
             404,
@@ -59,7 +59,7 @@ public class CustomExceptionHandler {
 
         Map<String, Object> errors = new HashMap<>();
         errors.put("conflictItems", e.getConflicts());
-        errors.put("count", e.getConflicts() != null ? e.getConflicts().size() : 0);
+        errors.put("detailMessage", e.getMessage());
 
         Response<?> response = new Response<>(
             409,
@@ -136,7 +136,7 @@ public class CustomExceptionHandler {
         conflictItems.add(conflictItem);
         
         errors.put("conflictItems", conflictItems);
-        errors.put("count", conflictItems.size());
+        errors.put("detailMessage", e.getMessage());
         if (duplicateField != null) {
             errors.put("duplicateField", duplicateField);
         }

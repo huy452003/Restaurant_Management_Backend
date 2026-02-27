@@ -51,5 +51,6 @@ public class RegisterModel extends BaseModel{
     @Size(max = 255, message = "validate.user.address.size")
     private String address;
     
+    @NotNull(message = "validate.user.role.required")
     private UserRole role;
 }

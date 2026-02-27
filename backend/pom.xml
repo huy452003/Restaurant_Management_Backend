@@ -43,6 +43,7 @@
         <module>app</module>         
         <module>logging</module>       
         <module>handle_exceptions</module> 
+        <module>security</module>
       </modules>
           
       <dependencyManagement>   
@@ -80,6 +81,13 @@
           <dependency>
             <groupId>com.handle_exceptions</groupId>
             <artifactId>handle_exceptions</artifactId>
+            <version>4.0.1</version>
+            <type>jar</type>
+            <scope>compile</scope>
+          </dependency>
+          <dependency>
+            <groupId>com.security</groupId>
+            <artifactId>security</artifactId>
             <version>4.0.1</version>
             <type>jar</type>
             <scope>compile</scope>

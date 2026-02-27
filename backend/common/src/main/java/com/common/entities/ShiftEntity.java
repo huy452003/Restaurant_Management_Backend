@@ -1,8 +1,7 @@
 package com.common.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -12,8 +11,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.common.enums.ShiftStatus;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "shifts")
@@ -32,6 +29,11 @@ public class ShiftEntity extends BaseEntity {
     private ShiftStatus shiftStatus;
     @Column(name = "notes")
     private String notes;
+
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")

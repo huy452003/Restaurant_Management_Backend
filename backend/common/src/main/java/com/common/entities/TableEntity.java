@@ -1,17 +1,14 @@
 package com.common.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import com.common.enums.TableStatus;
-import jakarta.persistence.OneToMany;
 import java.util.List;
-import jakarta.persistence.FetchType;
 
 @Entity
 @Table(name = "tables")
@@ -28,6 +25,11 @@ public class TableEntity extends BaseEntity {
     private TableStatus tableStatus;
     @Column(name = "location")
     private String location;
+
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
 
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY)
     private List<ReservationEntity> reservations;

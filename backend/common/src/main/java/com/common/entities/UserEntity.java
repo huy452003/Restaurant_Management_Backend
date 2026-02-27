@@ -1,22 +1,24 @@
 package com.common.entities;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Collection;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import jakarta.persistence.OneToMany;
+
 import com.common.enums.UserRole;
 import com.common.enums.UserStatus;
 import com.common.enums.Gender;
-import jakarta.persistence.FetchType;
-import java.util.List;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 
 @Entity
 @Table(name = "users")
@@ -24,7 +26,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity extends BaseEntity {
+public class UserEntity extends BaseEntity implements UserDetails {
     @Column(name = "username", unique = true)
     private String username;
     @Column(name = "password")
@@ -45,6 +47,31 @@ public class UserEntity extends BaseEntity {
     private UserRole role;
     @Column(name = "user_status")
     private UserStatus userStatus;
+
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
+    
+    // Security
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Spring Security convention: role phải có prefix "ROLE_"
+        return List.of(new SimpleGrantedAuthority("ROLE_" + this.role.name()));
+    }
+    @Override
+    public String getUsername() {
+        return this.username;
+    }
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    // @Override
+    // public boolean isEnabled() {
+    //     return this.userStatus == UserStatus.ACTIVE;
+    // }
 
     @OneToMany(mappedBy = "waiter", fetch = FetchType.LAZY)
     private List<OrderEntity> orders;

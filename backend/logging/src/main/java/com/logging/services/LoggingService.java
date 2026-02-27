@@ -6,6 +6,6 @@ public interface LoggingService {
     void logInfo(String message, LogContext logContext);
     void logWarn(String message, LogContext logContext);
     void logDebug(String message, LogContext logContext);
-    void logError(String message, LogContext logContext, Exception exception);
+    void logError(String message, Exception exception, LogContext logContext);
 
 }

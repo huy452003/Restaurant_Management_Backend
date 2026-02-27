@@ -1,20 +1,16 @@
 package com.common.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
-import com.common.enums.MenuItemStatus;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.JoinColumn;
 import java.util.List;
-import jakarta.persistence.FetchType;
+
+import com.common.enums.MenuItemStatus;
 
 @Entity
 @Table(name = "menu_items")
@@ -37,6 +33,11 @@ public class MenuItemEntity extends BaseEntity {
     private MenuItemStatus menuItemStatus;
     @Column(name = "preparation_time")
     private Integer preparationTime;
+
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

@@ -1,8 +1,7 @@
 package com.common.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -12,8 +11,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import com.common.enums.ReservationStatus;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "reservations")
@@ -40,6 +37,11 @@ public class ReservationEntity extends BaseEntity {
     private ReservationStatus reservationStatus;
     @Column(name = "special_request")
     private String specialRequest;
+
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
 
     @ManyToOne
     @JoinColumn(name = "table_id")

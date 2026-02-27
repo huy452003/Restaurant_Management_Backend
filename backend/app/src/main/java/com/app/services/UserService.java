@@ -1,16 +1,32 @@
 package com.app.services;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.common.models.UserModel;
 import com.common.models.security.RegisterModel;
+import com.common.models.security.UserSecurityModel;
 import com.common.models.UpdateUserNormalModel;
+import com.common.models.security.LoginModel;
+import com.common.enums.Gender;
+import com.common.enums.UserRole;
+import com.common.enums.UserStatus;
 import com.common.models.UpdateUserForAdminModel;
 
 public interface UserService {
     List<UserModel> getAll();
-    List<UserModel> creates(List<RegisterModel> registers);
+    List<UserSecurityModel> creates(List<RegisterModel> registers);
+    UserSecurityModel login(LoginModel req);
     List<UserModel> updatesNormal(List<UpdateUserNormalModel> updates, List<Integer> userIds);
-    // List<UserModel> updatesForAdmin(List<UpdateUserForAdminModel> updates, List<Integer> userIds);
+    List<UserModel> updatesForAdmin(List<UpdateUserForAdminModel> updates, List<Integer> userIds);
+    Page<UserModel> filters(
+        Integer id, String username, String fullname,
+        String email, String phone, Gender gender,
+        LocalDate birth, String address, UserRole role, UserStatus userStatus,
+        Pageable pageable
+    );
     UserModel verifyAndActivate(Integer userId, String verificationCode);
 }

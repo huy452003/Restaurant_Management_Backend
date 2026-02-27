@@ -1,8 +1,7 @@
 package com.common.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -11,8 +10,6 @@ import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 
 import com.common.enums.OrderItemStatus;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "order_items")
@@ -36,10 +33,14 @@ public class OrderItemEntity extends BaseEntity {
     @Column(name = "order_item_status")
     private OrderItemStatus orderItemStatus;
 
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
+
     @ManyToOne
     @JoinColumn(name = "order_id")
     private OrderEntity order;
-    
     @ManyToOne
     @JoinColumn(name = "menu_item_id")
     private MenuItemEntity menuItem;

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.common.repositories")
 @EntityScan(basePackages = "com.common.entities")
-@ComponentScan(basePackages = {"com.app", "com.common", "com.logging", "com.handle_exceptions"})
+@ComponentScan(basePackages = {"com.app", "com.common", "com.logging", "com.handle_exceptions", "com.security"})
 public class AppApplication {
 
 	public static void main(String[] args) {

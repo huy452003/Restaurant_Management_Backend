@@ -1,8 +1,7 @@
 package com.common.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,8 +12,6 @@ import java.time.LocalDateTime;
 
 import com.common.enums.PaymentMethod;
 import com.common.enums.PaymentStatus;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "payments")
@@ -37,6 +34,11 @@ public class PaymentEntity extends BaseEntity {
     private String transactionId;
     @Column(name = "paid_at")
     private LocalDateTime paidAt;
+
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
 
     @ManyToOne
     @JoinColumn(name = "order_id")

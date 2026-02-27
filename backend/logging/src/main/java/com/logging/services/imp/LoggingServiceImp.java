@@ -55,7 +55,7 @@ public class LoggingServiceImp implements LoggingService {
     }
 
     @Override
-    public void logError(String message, LogContext context, Exception exception) {
+    public void logError(String message, Exception exception, LogContext context) {
         String exceptionInfo = exception != null 
             ? exception.getClass().getSimpleName() + ": " + (exception.getMessage() != null ? exception.getMessage() : "No message")
             : "No exception";

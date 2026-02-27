@@ -1,8 +1,7 @@
 package com.common.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -13,8 +12,7 @@ import java.time.LocalDateTime;
 
 import com.common.enums.PromotionStatus;
 import com.common.enums.DiscountType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.FetchType;
+
 import java.util.List;
 
 @Entity
@@ -40,6 +38,11 @@ public class PromotionEntity extends BaseEntity {
     private LocalDateTime endDate;
     @Column(name = "status")
     private PromotionStatus status;
+
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
     
     @OneToMany(mappedBy = "promotion", fetch = FetchType.LAZY)
     private List<MenuItemEntity> menuItems;

@@ -1,17 +1,15 @@
 package com.common.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import com.common.enums.MenuItemStatus;
-import jakarta.persistence.OneToMany;
+
 import java.util.List;
-import jakarta.persistence.FetchType;
 
 @Entity
 @Table(name = "categories")
@@ -28,6 +26,11 @@ public class CategoryEntity extends BaseEntity {
     private String image;
     @Column(name = "menu_item_status")
     private MenuItemStatus menuItemStatus;
+
+    // version
+    @Version
+    @Column(name = "version")
+    private Long version;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<MenuItemEntity> menuItems;

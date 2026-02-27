@@ -12,9 +12,7 @@
 
 	<groupId>com.app</groupId>
 	<artifactId>app</artifactId>
-	<version>4.0.1</version>
 	<packaging>war</packaging>
-
 	<name>app</name>
 	
 	<url/>
@@ -46,6 +44,10 @@
 		<dependency>
 			<groupId>com.handle_exceptions</groupId>
 			<artifactId>handle_exceptions</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.security</groupId>
+			<artifactId>security</artifactId>
 		</dependency>
 		<!-- spring boot dependencies -->
 		<dependency>
